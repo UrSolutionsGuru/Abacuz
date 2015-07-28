@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>My Default Compliant Html</title>
+    <meta name="author" content="Gary Carter">
+    <meta name="description" content="A description of this document">
+    <!link rel="stylesheet" href="main.css">
+</head>
+<style>
+    * {
+       // outline: 1px red solid;
+    }
+</style>
+
+<body>
+    <nav id="Navigation">
+        <h1>Navigation</h1>
+    </nav>
+    <article>
+        <h1>ARTICLE HEADER</h1>
+        <section id="SectionOne">
+            <p>pre-amble</p>
+            <h2>Section Fredface</h2>
+
+            <h2>Section One-One</h2>
+
+        </section>
+        <section id="SectionTwo">
+            <h2>Section Two</h2>
+
+
+        </section>
+        <script type="text/javascript">
+            var AllSections = document.getElementsByTagName("section");
+            var H2s = AllSections[0].getElementsByTagName("h2");
+            var target = document.getElementById("Navigation");
+            var newel = document.createElement("ul");
+            target.appendChild(newel);
+            target = newel;
+            var i = 0;
+            while (i < AllSections.length) {
+                H2s = AllSections[i].getElementsByTagName("h2");
+                newel = document.createElement("li");
+                target.appendChild(newel);
+                newel.innerHTML = "<a target=\"_top\" href =\"#" + AllSections[i].id + "\" >" + H2s[0].innerHTML + "</a>";
+                i++;
+            }
+        </script>
+    </article>
+    <footer>Footer
+    </footer>
+</body>
+
+</html>
