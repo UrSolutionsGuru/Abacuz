@@ -12,7 +12,7 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
   //  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   // $stmt = $conn->query("SELECT ref, id, home FROM Menu where id = 'home'"); 
-	$sql = "SELECT ref, id, home, one, two FROM Menu where id = '".$frompage."'";
+	$sql = "SELECT ref, id, home, one, two, eight FROM Menu where id = '".$frompage."'";
 		$stmt = $conn->query($sql); 
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);  
 	
@@ -29,6 +29,7 @@ while ($result = $stmt->fetch()):
   $HOME = $result['home'];
   $ONE = $result['one'];
   $TWO = $result['two'];
+  $EIGHT = $result['eight'];
 endwhile;
 ?>
 
@@ -73,7 +74,7 @@ endwhile;
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" onclick="signOut();"><span class="glyphicon glyphicon-user"></span> Logout</a>
+				<li><?php echo $EIGHT ; ?>
 				</li>
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 					<ul class="dropdown-menu">
@@ -85,10 +86,21 @@ endwhile;
 								<!-- <span class="glyphicon glyphicon-log-in"></span> -->
 								</div>
 						</li>
+						<li><a href="#" onclick="signOut();"><span class="glyphicon glyphicon-user"></span> Logout</a>
+				    </li>
 					</ul>
 				</li>
 			</ul>
 
 			</div>
 		</div>
+<script>
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail());
+}
+</script>
 </nav>
