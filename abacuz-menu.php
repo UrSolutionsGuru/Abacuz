@@ -101,6 +101,16 @@ function onSignIn(googleUser) {
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail());
+	
+	var id_token = googleUser.getAuthResponse().id_token;
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', 'https://abacuz.net/receive-post.php');
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xhr.onload = function() {
+  	console.log('Signed in as: ' + xhr.responseText);
+	};
+	xhr.send('idtoken=' + id_token);
 }
 </script>
 </nav>
