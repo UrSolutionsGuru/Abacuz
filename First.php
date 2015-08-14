@@ -14,9 +14,10 @@
 
 </head>
 
-<?php $test='<li class="active"><a href="#">' ; $home='<li><a href="index.html">' ; $people=' class="active"' ; echo '
+<?php if ($_SERVER[ "REQUEST_URI"]="/second.php" ) { $test='<li><a href="fred.html">' ; $home='<li class="active"><a href="#">' ; $people=' class="active"' ; } else {$test='<li class="active"><a href="#">' ; $home='<li><a href="index.html">' ; $people=' ' ; } ?>
 
-<body><div class= "container"> 
+<body>
+    <div class="container">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -29,19 +30,25 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        '.$home. 'Home</a>
+                        <?php echo $home ; ?> Home</a>
                         </li>
-                        <li class="dropdown"'.$people. '>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">People 3 <span class="caret"></span></a>
+                        <li <?php echo $people ; ?> class="dropdown" >
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">People 4 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                '.$test. 'Testing Page</a>
-                                </li>
-                            </ul>
+                                <?php echo $test ; ?>Testing Page</a>
+                        </li>
+                        </ul>
 
                     </ul>
-                    
-                    </div>
+
                 </div>
+            </div>
         </nav>
-    My first PHP script!
-</div></body>'; ?>
+        My first PHP script!
+        <?php echo __FILE__ ; ?>
+        <?php echo basename(__FILE__, '.php'); ?>
+        <?php echo $_SERVER[ "SCRIPT_NAME"] ; ?>
+        <?php echo $_SERVER[ "REQUEST_URI"] ; ?>
+
+    </div>
+</body>

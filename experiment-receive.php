@@ -14,31 +14,27 @@
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="640911971946-p4iebvkl43t43ogts9g90iun0gera317.apps.googleusercontent.com">
-	
-	
 </head>
 
 <body>
 	
-    <div class="container">
-			<?php include 'abacuz-menu.php';?>
-			<article>
-            <h1>Abacuz.net is coming soon</h1>
-            <section id="SectionOne">
+	<p>fred 
+		
+		<?php
+header("Content-type: text/plain");
 
-                <h2>Watch this space!</h2>
+//console.log ("experiment");
 
+echo "face ";
 
-                <h3>Countdown</h3>
-                <p>10..9... 	</p>
-												
-							
+//echo $_POST["firstname"];
 
-            </section>
+print_r($_POST);
 
-        </article>
+echo "end";
 
-
-    </div>
-</body>
+?>
+	
+	</p>
+	</body>
 </html>			

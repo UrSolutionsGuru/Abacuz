@@ -33,7 +33,21 @@ while ($result = $stmt->fetch()):
 endwhile;
 ?>
 
+<?php //$result = $stmt->fetch(); ?>
+<?php //while ($result = $stmt->fetch()): ?>
+ <tr>
+   <td><?php // echo htmlspecialchars($result['ref']);  ?></td>
+   <td><?php //echo htmlspecialchars($result['id']);   ?></td>
+   <td><?php //echo htmlspecialchars($result['home']); ?></td>
+	 <td><?php //echo htmlspecialchars($result['one']); ?></td>
+	 <td><?php //echo htmlspecialchars($result['two']); ?></td>
+ </tr>
+<?php //endwhile; ?>
 
+				<?php //echo basename(__FILE__, '.php'); ?>
+        <?php //echo basename($_SERVER[ "SCRIPT_NAME"],'.php') ; ?>
+				<?php //echo basename($_SERVER[ "REQUEST_URI"],'.php')."Request URI" ; ?>
+        <?php //echo $_SERVER[ "REQUEST_URI"] ; ?>
 
 <?php $conn = null; ?>
 
