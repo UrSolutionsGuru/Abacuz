@@ -35,4 +35,49 @@ if ($obj->{'aud'} == "640911971946-p4iebvkl43t43ogts9g90iun0gera317.apps.googleu
         echo "Hack";
 }	
 
+include 'got-it.php';
+
+
+$servername = "localhost";
+$username = "abacuz_abacuz";
+$dbname = "abacuz_menucontrol";
+//$frompage = basename($_SERVER[ "SCRIPT_NAME"],'.php') ;
+$datetime = date_create()->format('Y-m-d H:i:s');
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+	
+		$sql = "SELECT sub, source FROM Logins where sub = '{$obj->{'sub'}}'";
+	
+	echo $sql;
+	
+		$stmt = $conn->query($sql); 
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		while ($result = $stmt->fetch()):
+			$SUB = $result['sub'];
+			$SOURCE = $result['source'];
+ 		endwhile;
+			echo "before if";
+	
+		if ($SOURCE != "Google") {
+			// set the PDO error mode to exception
+			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$sql = "INSERT INTO Logins (datejoined, email, name, permission, pictureurl, source, sub)
+			 VALUES ('{$datetime}', '{$obj->{'email'}}', '{$obj->{'name'}}', 'none', '{$obj->{'picture'}}' , 'Google', '{$obj->{'sub'}}')";
+			 // use exec() because no results are returned
+			$conn->exec($sql);
+			echo "New record created successfully";
+		} else {
+			echo "record already exists";
+		}
+    }
+catch(PDOException $e)
+    {
+    echo $sql . "<br>" . $e->getMessage();
+    }
+
+$conn = null;
+
+
+
  ?>
